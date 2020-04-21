@@ -1,0 +1,220 @@
+专利规范
+
+本专利依照SOOIP网站制定的规范
+
+import hashlib
+m = hashlib.md5(company.encode(encoding='utf-8'))
+# change_id即为"_id"的值
+change_id = m.hexdigest()
+
+{
+#唯一标识,由申请号md5 hash后组成
+_id : '',
+
+#发明名称
+inventName: '',
+
+#申请号
+'applyCode': '',
+
+#详情来源
+'detailSource': 'sooip',
+
+#doc文档
+'doc': {
+    #著录信息
+    baseInfo: {
+            #申请号校验
+            'applyVerifyCode': '',
+
+            #申请日
+            'applyDate': '',
+
+            #公开(公告)号
+            'publicCode': '',
+
+            #公开(公告)日
+            'publicDate': '',
+
+            #申请人
+            'applicant': '',
+
+            #发明人
+            'inventor': '',
+
+            #申请地址
+            'address': '',
+
+            #申请人区域代码
+            'areaCode': '',
+
+            #专利权人
+            'patentee': '',
+
+            #洛迦诺分类
+            'zjnClassify': '',
+
+            #IPC分类号
+            'IPCCode': '',
+
+            #CPC
+            'CPCCode': '',
+
+            #优先权
+            'priority': '',
+
+            #专利代理机构
+            'patAgency': '',
+
+            #代理人
+            'patAgent': '',
+
+            #审查员
+            'examiner': '',
+
+            #国际申请
+            'gjsq': '',
+
+            #国际公开（公告）
+            'gjgk': '',
+
+            #进入国家日期
+            'jrgjrq': '',
+
+            #分案申请
+            'fasq': '',
+        },
+    #类型，为一个列表
+    patType: '',
+
+    #所有图片完整链接, 待之后下载
+    'imgUrls': {
+            #说明书附图
+            'desDrawings': [],
+
+            #权力要求图片
+            'claImg': [],
+
+            #说明图片
+            'desImg': []
+        },
+
+
+    #关键字
+    'keyWords': [],
+
+    #法律状态
+    'lawInfo': [
+            {
+
+        #法律信息公告日
+        'lawDate': '',
+
+        #法律状态
+        'lawStatus': '',
+
+        #法律状态信息
+        'lawStatusInfo': ''
+            }
+        ]
+
+    #摘要
+    'absInfo': ''
+
+    #权力要求
+    'claInfo': ''
+
+    #说明书
+    'desInfo': ''
+    },
+#图片是否下载的标识, 未下载为0，取出下载为1，下载完成为2
+flag: 0
+}
+
+
+
+本专利依照LINDENPAT网站制定的规范
+
+{
+#唯一标识,由申请号md5 hash后组成
+_id : '',
+
+#发明名称
+inventName: '',
+
+#申请号
+'applyCode': '',
+
+#详情来源
+'detailSource': 'lindenpat',
+
+#doc文档
+'docs': {
+    #著录信息
+    baseInfo: {
+            #申请日
+            'applyDate': '',
+
+            #公开(公告)号
+            'publicCode': '',
+
+            #公开(公告)日
+            'publicDate': '',
+
+            #申请人
+            'applicant': '',
+
+            #发明人
+            'inventor': [],
+
+            #IPC分类号
+            'IPCCode': '',
+
+            #申请地址
+            'address': '',
+
+            #申请人区域代码
+            'areaCode': '',
+
+            #专利代理机构
+            'patAgency': '',
+
+            #代理人
+            'patAgent': '',
+        },
+    #类型，为一个列表
+    patType: '',
+
+    #所有图片完整链接, 待之后下载
+    'imgUrls': {
+            #说明书附图
+            'desDrawings': [],
+        },
+
+    #法律状态
+    'lawInfo': [
+            {
+
+        #法律信息公告日
+        'lawDate': '',
+
+        #法律状态
+        'lawStatus': '',
+
+        #法律状态信息
+        'lawStatusInfo': ''
+            }
+        ]
+
+    #摘要
+    'absInfo': ''
+
+    #权力要求(列表)
+    'claInfo': []
+
+    #说明书
+    'desInfo': ''
+    },
+#图片是否下载的标识, 未下载为0，取出下载为1，下载完成为2
+flag: 0
+}

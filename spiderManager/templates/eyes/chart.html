@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<!-- saved from url=(0027)http://127.0.0.1:8000/eyes/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style id="stndz-style"></style>
+        
+        <title>
+          IP 拨号
+        </title>
+         <script src="../static/js/jquery.min.js"></script>
+        <script src="/static/js/highcharts.js"></script>
+        <script src="/static/js/highcharts-more.js"></script>
+        <link rel="stylesheet" href="../static/css/semantic.css">
+        <link rel="stylesheet" href="../static/css/dropdown.css">
+        <link rel="stylesheet" href="../static/css/transition.min.css">
+        <link rel="stylesheet" href="../static/css/new.css">
+        <script src="../static/js/semantic.js"></script>
+        <script src="../static/js/exporting.js"></script>
+        <script src="../static/js/dropdown.min.js"></script>
+        <script src="../static/js/transition.js"></script>
+    </head>
+    <style>
+        .myTable{
+            width: 1450px;
+            margin: auto;
+/*            padding-top: 50px;*/
+            position: relative;
+            left: -165px;
+        }
+        .myTable h2{
+            font-size: 16px;
+        }
+        .ntable .tx {
+            text-align: center;
+            width: 59px;
+        }
+        .ntable th {
+            text-align: center;
+            background: #F2F9FC;
+            border: #E4EEF6 1px solid;
+            border-collapse: collapse;
+            padding: 10px 12px 10px 12px;
+            font-weight: normal;
+            color: #444;
+            line-height: 19px;
+        }
+        .ntable {
+            width: 700px;
+            margin: 0 auto;
+            margin-bottom: 60px;
+            float: left;
+        }
+        .firstn{
+            float: right;
+        }
+        .ntable-odd tr:nth-child(odd) {
+            background: #fff;
+        }
+        .ntable .tx {
+            text-align: center;
+            width: 59px;
+        }
+        .ntable td {
+            padding: 12px 10px 12px 10px;
+            border: #E4EEF6 1px solid;
+            word-break: break-all;
+            font-size: 14px;
+            line-height: 19px;
+            color: #222;
+        }
+        .ntable .red{
+            color: #36B935;
+            background-color: #000;
+        }
+        .btnBOx{
+            height: 50xp;
+            line-height: 50px;
+            text-align: right;
+            margin-bottom: 10px;
+        }
+        .btnBOx button{
+            width: 80px;
+            height: 36px;
+            line-height: 34px;
+            padding: 0;
+            text-align: center;
+            border: 0;
+            border-radius: 2px;
+            outline: 0;
+            background-color: #128bed;
+            color: #fff;
+            margin-left: 50px;
+        }
+    </style>
+    <body>
+     <div class="ui container" style="margin-top: 3em;">
+        <div class="ui inverted menu">
+          <div class="header item">SPIDER</div>
+            <div class="activate item" tabindex="0">
+                <a href="http://10.0.0.55:9998/counter/show">数据量</a>
+          </div>
+            <div class="activate item" tabindex="0">
+                <a href="http://10.0.0.55:9998/eyes">IPs</a>
+          </div>
+
+          <div class="right menu">
+           <div class="item">
+              <div class="ui transparent inverted icon input">
+                <i class="search icon"></i>
+                <input type="text" placeholder="Search">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="myTable">
+            <div class="btnBOx">
+                <span>计数: <span style="color:#ff0000;font-size:24px;" id="num"> 10</span></span>
+                <button onclick="stopTime()">停止</button>
+            </div>
+            <table class="ntable firstn">
+                <tr>
+                    <td colspan="4" align='center'> <h2>单独拨号</h2></td>
+                </tr>
+                <tr>
+                    <th>PORT</th><th>MAC</th><th>拨号时间</th><th>间隔时间</th>
+                </tr>
+                <tbody id="table1">
+                  
+                </tbody>
+            </table>
+           
+                <table class="ntable">
+                     <tr>
+                        <td colspan="4" align='center'> <h2>全部拨号</h2></td>
+                    </tr>
+                    <tr>
+                        <th>PORT</th><th>MAC</th><th>拨号时间</th><th>间隔时间</th>
+                    </tr>
+                    <tbody id="table2">
+                      
+                    </tbody>
+                </table>
+            </div>
+    </div>
+    <script>
+        var  timer;
+        let num=10;
+        $(function(){
+           requireData()
+           timer = setInterval(function(){
+                if(num == 1){
+                    requireData();
+                    num=10;
+                }
+                else{
+                    num--;
+                }
+               $("#num").html(num);
+                
+            },1000)
+        })
+        function requireData(){
+                $.ajax({
+                   url:"http://10.0.0.55:9998/eyes/ajax",
+                   data:"",
+                   success:function(res){
+                       let arr =JSON.parse(res)
+                       console.log(arr)
+                      initpage(arr[0],'#table1');
+                      initpage(arr[1],'#table2')
+                   }
+               })
+        }
+        function initpage(data,ele){
+            let arr=data.data;
+            let str ='';
+            for( let item of arr){
+                if(math15(item.distance)){
+                    str+='<tr><td>'+item.ip+'</td><td>'+item.mac+'</td><td>'+item.updateTime+'</td><td>'+item.distance+'</td></tr>'
+                }
+                else{
+                    str+='<tr><td class="red">'+item.ip+'</td><td class="red">'+item.mac+'</td><td class="red">'+item.updateTime+'</td><td class="red">'+item.distance+'</td></tr>' 
+                }
+            }
+            $(ele).html(str)
+        }
+            
+        function math15(str){
+            let arr =str.split(":");
+            if(arr[0] > 0) return false;
+            else if(arr[1] > 15  && arr[2] != 0  ) return false;
+            else return true;
+        }    
+        function stopTime(){
+            clearInterval(timer)
+        }
+    </script>
+        
+</body></html>
+
+
+
+
+
+
+
+
+
+
+

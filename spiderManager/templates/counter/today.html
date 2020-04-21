@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="ui buttons">
+    {% for db in dbs %}
+    <a href="?db={{ db.db_name }}"><button class="ui button">{{ db.db_name }}</button></a>
+    {% endfor %}
+    </div>
+    <table class="ui padded celled right aligned table">
+          <thead>
+            <tr>
+                <th class="left aligned">数据量  [昨日数据量：{{ yes }}]</th>
+                <th>查询时间</th>
+                <th>网站</th>
+                <th>数据差</th>
+          </tr></thead>
+          <tbody>
+          {% for obj in objs %}
+            <tr>
+              <td class="left aligned">{{ obj.number }}</td>
+              <td>{{ obj.time }}</td>
+              <td>{{ obj.db_name }}</td>
+              <td>{{ obj.record}}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+
+        </table>
+{% endblock %}

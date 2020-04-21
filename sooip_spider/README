@@ -1,0 +1,53 @@
+scrapy爬虫实现了专利信息详情的抓取。seed为已抓取好的列表页信息，从redis中获取。
+
+列表页爬虫请看sooip_seed, sooip_list, sooip_redis，阅读顺序依次。
+
+sooip_seed 负责生成日期，根据每个日期抓取专利列表接口，获取该日期当天专利公开的总数目,并计算出分页参数存入redis队列。
+
+sooip_list 从队列中获取分页参数，根据参数请求列表页获取详情也所需的pid字段，以及一些附加信息(如摘要，申请号等), 结果存入mongo中。
+
+sooip_redis 从mongo中取出数据，打标，推入redis中, scrapy爬虫负责下载。（注意，一次不能推入太多数据到redis中，因为种子数据中含有
+
+            摘要以及图片的url信息，所占内存比较大，否则会报错）
+
+            如果出现redis内存占用过多引起的报错，可以将存这个数据的键删除掉。因为未下载成功的数据finished字段为0，到时候只需要在
+
+            mongo中执行db.col.update({'finished':0}, {$set:{'flag':0}}, false, true) 批量更新，然后重新推入redis中即可。
+
+CookiesPool 是cookie池，维护着抓取所需的cookie。
+
+            account_sooip.txt是sooip所注册的账号，运行importer.py将账号密码已特定格式录入到redis中。
+
+            配置GENERATOR_MAP = {'sooip': 'SooipCookiesGenerator'} TESTER_MAP = {'sooip': 'SooipValidTester'}以及
+
+            redis地址端口
+
+            GENERATOR_PROCESS = True 会检测未登陆的账号，并登陆获取cookie。
+
+            VALID_PROCESS = True 会检测cookie是否有效。
+
+            API_PROCESS = True 会生成api接口。这个一般不建议使用，在redis中直接获取即可。
+
+sooip_register 是sooip的注册程序，但是这个验证码打码识别率较低。
+
+incr_sooip 下的patent_spider是增量爬虫，差别不大。
+
+docker服务器地址 账号密码
+
+10.2.1.93:60023   dgg  whitedgg  root whitedgg
+
+10.2.1.95:60023   dgg  whitedgg  root whitedgg
+
+10.2.1.96:60023   dgg  whitedgg  root whitedgg
+
+10.2.1.97:60023   dgg  whitedgg  root whitedgg
+
+redis服务器 账号密码
+10.2.1.91:60023 dgg whitedgg root whitedgg
+
+94因为网不好所以没用上。
+
+
+
+soopip测试账号：
+test1234/a123456

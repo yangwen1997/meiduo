@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>
+          Spider Man!!
+        </title>
+        <script src="../static/js/jquery.min.js"></script>
+        <script src="{% static 'js/highcharts.js' %}"></script>
+        <script src="{% static 'js/highcharts-more.js' %}"></script>
+        <link rel="stylesheet" href="../static/css/semantic.css">
+        <link rel="stylesheet" href="../static/css/dropdown.css">
+        <link rel="stylesheet" href="../static/css/transition.min.css">
+        <link rel="stylesheet" href="../static/css/new.css">
+        <script src="../static/js/semantic.js"></script>
+        <script src="../static/js/exporting.js"></script>
+        <script src="../static/js/dropdown.min.js"></script>
+        <script src="../static/js/transition.js"></script>
+        {% block head%}
+        {% endblock %}
+
+    </head>
+    <body>
+
+    <div class="ui container" style="margin-top: 3em;">
+        <div class="ui inverted menu">
+          <div class="header item">SPIDER</div>
+{#           <div class="ui dropdown item" tabindex="0">#}
+{#            账号管理#}
+{#            <i class="dropdown icon"></i>#}
+{#            <div class="menu transition hidden" id ='navbar' tabindex="-1">#}
+{#              <div class="item"><a href="{% url 'accounts:create' %}">新建账号</a></div>#}
+{#                <div class="divider"></div>#}
+{#              <div class="item"><a href="{% url 'accounts:update' %}">修改账号</a></div>#}
+{#                <div class="divider"></div>#}
+{#              <div class="item"><a href="{% url 'accounts:delete' %}">删除账号</a></div>#}
+{#            </div>#}
+
+{#          </div>#}
+{#            <div class="ui dropdown item" tabindex="0">#}
+{#            IP管理#}
+{#            <i class="dropdown icon"></i>#}
+{#            <div class="menu transition hidden" id ='navbar' tabindex="-1">#}
+{#              <div class="item"><a href="{% url 'accounts:create' %}">新建账号</a></div>#}
+{#                <div class="divider"></div>#}
+{#              <div class="item"><a href="{% url 'accounts:update' %}">修改账号</a></div>#}
+{#                <div class="divider"></div>#}
+{#              <div class="item"><a href="{% url 'accounts:delete' %}">删除账号</a></div>#}
+{#            </div>#}
+{#          </div>#}
+
+            <div class="activate item" tabindex="0">
+                <a href="{% url 'counter:show' %}">数据量</a>
+          </div>
+         <div class="activate item" tabindex="0">
+                <a href="http://10.0.0.55:9998/eyes">IPs</a>
+          </div>
+          <div class="right menu">
+           <div class="item">
+              <div class="ui transparent inverted icon input">
+                <i class="search icon"></i>
+                <input type="text" placeholder="Search">
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+{% block content %}
+{% endblock %}
+</div>
+</body>
+{% block foot %}
+
+{% endblock %}
+</html>

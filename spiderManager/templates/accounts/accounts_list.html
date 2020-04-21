@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <table class="ui padded celled right aligned table">
+          <thead>
+            <tr>
+                <th class="left aligned">账号:[{{counts}}]</th>
+                <th>密码</th>
+                <th>状态</th>
+                <th>网站</th>
+				<th>代理</th>
+                <th>办否</th>
+                <th>问题原因</th>
+          </tr></thead>
+          <tbody>
+          {% for obj in objs %}
+            <tr>
+              <td class="left aligned">{{ obj.phone }}</td>
+              <td>{{ obj.password }}</td>
+              <td>{{ obj.status }}</td>
+              <td>{{ obj.website }}</td>
+				 <td>{{ obj.ip }}</td>
+              <td>{{ obj.baned }}</td>
+              <td>{{ obj.trouble|slice:":6" }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+    <ul class="pagination" id="pager">
+        {#上一页按钮开始#}
+        {# 如果当前页有上一页#}
+        {% if objs.has_previous %}
+            {#  当前页的上一页按钮正常使用#}
+            <li class="previous"><a href=list?website={{ website }}&page={{ objs.previous_page_number }}">上一页</a></li>
+        {% endif %}
+        {#上一页按钮结束#}
+        {# 页码开始#}
+{#        {% for num in paginator.page_range %}#}
+{#            {% if num == currentPage %}#}
+{#                <li class="item active"><a href="list?website={{ website }}&page={{ num }}">{{ num }}</a></li>#}
+{#            {% else %}#}
+{#                <li class="item"><a href="list?website={{ website }}&page={{ num }}">{{ num }}</a></li>#}
+{##}
+{#            {% endif %}#}
+{#        {% endfor %}#}
+        {#页码结束#}
+        {# 下一页按钮开始#}
+        {% if objs.has_next %}
+            <li class="next"><a href="list?website={{ website }}&page={{ objs.next_page_number }}">下一页</a></li>
+        {% endif %}
+        {# 下一页按钮结束#}
+    </ul>
+{% endblock %}

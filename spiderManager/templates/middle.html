@@ -1,0 +1,18 @@
+{% extends "admin/base_site.html" %}
+{% load i18n l10n admin_urls %}
+{% block content %}
+<p>{% blocktrans %}To what name would you like to change? {% endblocktrans %}</p>
+<form action="" method="post">{% csrf_token %}
+     <ul>{{ queryset|unordered_list }}</ul>
+
+    <div>
+    {% for obj in queryset %}
+    <input type="hidden" name="{{ action_checkbox_name }}" value="{{ obj.pk|unlocalize }}" />
+    {% endfor %}
+    <input type ='hidden' name='action' value='{{ action }}'/>
+    <input type ='hidden' name='post' value='yes'/>
+     <input type="text" name="new_name" />
+     <input type="submit" value="Confirm"/>
+ </div>
+</form>
+{% endblock %}

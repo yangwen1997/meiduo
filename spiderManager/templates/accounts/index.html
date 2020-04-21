@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="ui big message">字段说明：
+    <p>status:类型：int，记录可用状态 初始为0，状态1为不可用；</p>
+    <p>trouble:类型:string,记录错误信息，初始为Null,</p>
+    <p>phone:用户名，password:密码,website:网站</p>
+    </div>
+    <h3>账号创建</h3>
+    <hr>
+    <div class="ui floating message">
+    <p>url地址:/create_accounts</p>
+    <p>url参数:phone,password,website,cookie('非必须')</p>
+    <p>url示例:http://127.0.0.1:8000/accounts/create_accounts?phone=1123415687&password=123456789&website=qichacha</p>
+    <p>成功返回:"success"</p>
+    </div>
+
+         <h3>账号获取</h3>
+        <hr>
+    <div class="ui floating message">
+    <p>参数:website</p>
+    <p>获取可用账号  url:/get_good_accounts</p>
+    <p>获取不可用账号url:/get_bad_accounts</p>
+    <p>url示例:http://127.0.0.1:8000/accounts/get_good_accounts?website=qichacha</p>
+    <p>返回结果:json</p>
+    </div>
+
+        <h3>账号修改</h3>
+        <hr>
+    <div class="ui floating message">
+    <p>url地址:/update_things</p>
+    <p>url参数:phone,website,(status,cookie,trouble)[非必要]</p>
+    <p>url示例:http://127.0.0.1:8000/accounts/update_things?website=qichahca&phone=1123415687&status=1</p>
+        <p>成功返回:"success"</p>
+    </div>
+    <h3>账号删除</h3>
+    <hr>
+    <div class="ui floating message">
+    <p>url地址:/delete_accounts</p>
+    <p>url参数:phone</p>
+    <p>url示例:http://127.0.0.1:8000/accounts/delete_accounts?phone=1123415687</p>
+    <p>成功返回:"success"</p>
+    </div>
+
+
+
+
+    <br>
+    <br>
+
+{% endblock %}

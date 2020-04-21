@@ -1,0 +1,11 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+{% block title %}{{ title }} | {% trans 'Django site admin' %}{% endblock %}
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">{% trans ' 蜘蛛侠的工作间' %}</a></h1>
+{% endblock %}
+
+
+{% block nav-global %}
+<a href='http://10.0.0.55:5555'>flower监控室</a>
+{% endblock %}

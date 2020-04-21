@@ -1,0 +1,517 @@
+{% extends 'base.html' %}
+{% block head %}
+    {{ block.super }}
+
+
+{% endblock %}
+{% block content %}
+    <div class="ui compact menu" style="width: 100%;position: relative;min-height: 2px;">
+      <div class="ui simple dropdown item" style="position: relative;padding: 0">
+        <div class="menu" id="left_nav" style="min-height: 600px;background:#1b1c1d;color: #fff">
+
+          <div class="menu_item">
+            <h2 class="nav_ul_title active">企业信息 <img src="../static/images/icon_down.png" class="title_img"></h2>
+            <div class="nav_ul" >
+              <div class="item active">
+                  <a class='proName'>企查查公众号</a>
+              </div>
+              <div class="item">
+                  <a class='proName'>工信中国</a>
+              </div>
+              <div class="item">
+                  <a class='proName'>企查查M2</a>
+              </div>
+               <div class="item">
+                  <a class='proName'>启信宝M2</a>
+              </div>
+             <div class="item">
+                  <a class='proName'>企查猫基本信息</a>
+              </div>
+                   <div class="item">
+                  <a class='proName'>百度信用基本信息</a>
+              </div>
+             
+                   <div class="item">
+                  <a class='proName'>中意征信</a>
+              </div>
+              <div class="item">
+                  <a class='proName'>工信中国资质</a>
+              </div>
+                  
+
+                   <div class="item">
+                  <a class='proName'>水滴信用M2</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu_item">
+            <h2 class="nav_ul_title">名录  <img src="../static/images/icon_down.png" class="title_img"></h2>
+            <div class="nav_ul" >
+              <div class="item">
+                  <a class='proName'>名录</a>
+              </div>
+             
+            </div>
+          </div>
+
+          <div class="menu_item">
+            <h2 class="nav_ul_title">商标  <img src="../static/images/icon_down.png" class="title_img"></h2>
+            <div class="nav_ul" >
+              <div class="item">
+                  <a class='proName'>商标详情</a>
+              </div>
+            </div>
+          </div>
+         
+          <div class="menu_item">
+            <h2 class="nav_ul_title">法律  <img src="../static/images/icon_down.png" class="title_img"></h2>
+            <div class="nav_ul" >
+              <div class="item">
+                  <a class='proName'>无讼文书</a>
+              </div>
+              <div class="item">
+                  <a class='proName'>裁判文书</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="menu_item">
+            <h2 class="nav_ul_title">建筑资产  <img src="../static/images/icon_down.png" class="title_img"></h2>
+            <div class="nav_ul" >
+              <div class="item">
+                  <a class='proName'>建筑资质</a>
+              </div>
+              
+            </div>
+          </div>
+         <div class="menu_item">
+            <h2 class="nav_ul_title">专利  <img src="../static/images/icon_down.png" class="title_img"></h2>
+            <div class="nav_ul" >
+              <div class="item">
+                  <a class='proName'>国家专利名录</a>
+              </div>
+              <div class="item">
+                  <a class='proName'>专利详情</a>
+              </div>
+
+            </div>
+          </div>
+
+		  
+		   <div class="menu_item">
+            <h2 class="nav_ul_title">其他  <img src="../static/images/icon_down.png" class="title_img"></h2>
+            <div class="nav_ul" >
+               <div class="item">
+              <a class='proName'>裁判文书ID</a>
+            </div>
+                <div class="item">
+              <a class='proName'>企查查资产</a>
+            </div>
+			 <div class="item">
+                  <a class='proName'>启信名录</a>
+              </div>
+              <div class="item">
+                  <a class='proName'>企查查名录</a>
+              </div>
+			<div class="item">
+                  <a class='proName'>工信列表</a>
+              </div>
+               <div class="item">
+                  <a class='proName'>裁判文书详情</a>
+              </div>
+               <div class="item">
+                  <a class='proName'>手机号</a>
+              </div>
+
+
+            </div>
+          </div>
+        
+			  
+        </div>
+      </div>
+        <!--      右边    -->
+       <div class="nav_right">
+            <div class="nav_right_up">
+                <p>当前总量：
+                  <span id="nowNum">-</span>
+                </p>
+
+                <p>昨日总量：
+                  <span id="yNum">-</span>
+                </p>
+
+                <p>当前增量：
+                  <span id="updataNum">-</span>
+                </p>
+                <p>昨日增量：
+                  <span id="ysum">-</span>
+                </p>
+            </div> 
+		    <div class="nav_right_down" id="classifyBox">
+               
+		    </div>      
+      </div>     
+    </div>
+    <!--    """""""""""""""""""""""""""""""修改结束"""""""""""""""""""""""""""""-->
+	
+   <div class="echarts" id="echarts" _echarts_instance_="ec_1534224853928" style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
+      <div style="position: relative; overflow: hidden; width: 1087px; height: 360px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;">
+        <canvas data-zr-dom-id="zr_0" width="1087" height="360" style="position: absolute; left: 0px; top: 0px; width: 1087px; height: 360px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas>
+      </div>
+      <div style="position: absolute; display: block; border-style: solid; white-space: nowrap; z-index: 9999999; transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1), top 0.4s cubic-bezier(0.23, 1, 0.32, 1); background-color: rgba(50, 50, 50, 0.7); border-width: 0px; border-color: rgb(51, 51, 51); border-radius: 4px; color: rgb(255, 255, 255); font: 14px/21px ;Microsoft YaHei; padding: 5px; left: 784px; top: 109px;">08-12
+        12:00
+        <br>
+        <span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:rgba(191,68,76,1);"></span>875</div>
+    </div>
+    <div id="bar" style="width: 100%;height: 450px;padding:2px">
+    </div>
+  </div>
+  
+{% endblock %}
+{% block foot %}
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+    <script type="text/javascript">  
+	$(function(){   //初始页面
+        goLink("名录");
+            $.ajax({
+              type:"get",
+              url:"http://10.0.0.55:9998/counter/sum_day",
+              data:{},
+              success:(res)=>{
+                 
+                  var obj = JSON.parse(res);
+                  initChart2(obj)
+              }
+          })
+		 initChartClassify()
+    })
+   function initChartClassify(){
+           $.ajax({
+              type:"get",
+              url:" http://10.0.0.55:9998/counter/types",
+              data:{},
+              success:(res)=>{
+                     var Arr = JSON.parse(res);
+                     let classifyStr="";
+                      for(let item of Arr){
+                          for(let key in item){
+                            classifyStr+=`<p>${key}：<span>${item[key]}</span></p>`
+                          }
+                      }
+                      $("#classifyBox").html(classifyStr)
+                  }
+           })
+      }
+  
+    $(".menu_item .nav_ul_title").on("click", function () {
+      var that = $(this)
+      if (that.hasClass("active")){
+          that.removeClass("active")
+      }
+      else{
+          that.addClass("active")
+      }
+      that.parent().find(".nav_ul").slideToggle(500)
+     
+    })
+      
+      $("#left_nav .item").on("click",function(){
+          if( $(this).hasClass('active')) return;
+          $("#left_nav .item").removeClass("active")
+          $(this).addClass("active");
+          var str = $(this).find('a').html();
+          goLink(str)
+      })
+      
+      function goLink(str){
+         
+          $.ajax({
+              type:"get",
+              url:"http://10.0.0.55:9998/counter/ajax",
+              data:{name:str},
+              success:(res)=>{
+                  var obj = JSON.parse(res);
+                  initPage(obj)
+              }
+          })
+      }
+     function initPage(obj){
+          $("#nowNum").html(obj.tdata)
+          $("#yNum").html(obj.ydata)
+          $("#updataNum").html(obj.updata);
+          $("#ysum").html(obj.ysum);
+          initChart(obj.data,obj.cname)
+      }
+
+    var dom = document.getElementById("echarts");
+    var myChart = echarts.init(dom);
+    var app = {};
+    
+      function initChart(data,str){
+        var dateList = data.map(function (item) {
+          return item[0];
+        });
+        var valueList = data.map(function (item) {
+          return item[1];
+        });
+      
+        var option = {
+      // Make gradient line here
+              visualMap: [{
+                show: false,
+                type: 'continuous',
+                seriesIndex: 0,
+                min: 0,
+                max: 400
+              }],
+
+              title: [{
+                left: 'center',
+                text: str
+              }],
+              tooltip: {
+                trigger: 'axis'
+              },
+              xAxis: [{
+                data: dateList
+              }],
+              yAxis: [{
+                splitLine: {
+                  show: false
+                }
+              }],
+              grid: [{
+                bottom: '10%'
+              }],
+              series: [{
+                type: 'line',
+                showSymbol: false,
+                data: valueList
+              }]
+            };;    
+    
+        if (option && typeof option === "object") {
+          myChart.setOption(option, true);
+        }
+  }
+//柱状图***********************************************************************
+      
+var dom2 = document.getElementById("bar");
+var myChart2 = echarts.init(dom2);
+var app2 = {};
+option2 = null;
+var posList = [
+    'left', 'right', 'top', 'bottom',
+    'inside',
+    'insideTop', 'insideLeft', 'insideRight', 'insideBottom',
+    'insideTopLeft', 'insideTopRight', 'insideBottomLeft', 'insideBottomRight'
+];
+
+
+//************************************************************
+      
+function initChart2(dataArr){         
+
+    app2.configParameters = {
+        rotate: {
+            min: -90,
+            max: 90
+        },
+        align: {
+            options: {
+                left: 'left',
+                center: 'center',
+                right: 'right'
+            }
+        },
+        verticalAlign: {
+            options: {
+                top: 'top',
+                middle: 'middle',
+                bottom: 'bottom'
+            }
+        },
+        position: {
+            options: echarts.util.reduce(posList, function (map, pos) {
+                map[pos] = pos;
+                return map;
+            }, {})
+        },
+        distance: {
+            min: 0,
+            max: 100
+        }
+    };
+
+    app2.config = {
+        rotate: 90,
+        align: 'left',
+        verticalAlign: 'middle',
+        position: 'insideBottom',
+        distance: 15,
+        onChange: function () {
+            var labelOption = {
+                normal: {
+                    rotate: app2.config.rotate,
+                    align: app2.config.align,
+                    verticalAlign: app2.config.verticalAlign,
+                    position: app2.config.position,
+                    distance: app2.config.distance
+                }
+            };
+            myChart2.setOption({
+                series: [{
+                    label: labelOption
+                }, {
+                    label: labelOption
+                }, {
+                    label: labelOption
+                }, {
+                    label: labelOption
+                }, {
+                    label: labelOption
+                }, {
+                    label: labelOption
+                }]
+            });
+        }
+    };
+
+
+    var labelOption = {
+        normal: {
+            show: true,
+            position: app2.config.position,
+            distance: app2.config.distance,
+            align: app2.config.align,
+            verticalAlign: app2.config.verticalAlign,
+            rotate: app2.config.rotate,
+            formatter: '',
+            fontSize: 12,
+            rich: {
+                name: {
+                    textBorderColor: '#fff'
+                }
+            }
+        }
+    };
+
+          var titleArr=[],timeArr=[],seriesArr=[];
+
+          for(let item of dataArr){
+              let isHas = 0,index = 0,idx=null;
+              for(let item2 of seriesArr){
+                  if( item.type == item2.name){
+                      isHas=1;
+                      idx=index;
+                  }
+                  index++;
+              }
+              if(isHas){
+                 seriesArr[idx].data.push(item.number)
+              }
+              else{
+                  seriesArr.push({
+                    name: item.type,
+                    type: 'bar',
+                    barGap: 0,
+                    label: labelOption,
+                    data: [item.number]
+                })
+              }
+            if(titleArr.indexOf(item.type) === -1){
+                titleArr.push(item.type);
+            }
+            if(timeArr.indexOf(item.date) === -1){
+                timeArr.push(item.date);
+            }
+              
+
+         } if(seriesArr[0].data.length != seriesArr[seriesArr.length - 1].data.length){
+            let moLen = seriesArr[0].data.length,
+                childLen = seriesArr[seriesArr.length - 1].data.length;
+            let newArr =[];
+                newArr.length = moLen-childLen;
+            seriesArr[seriesArr.length - 1].data =newArr.concat(seriesArr[seriesArr.length - 1].data);
+        }
+          let startIdx=0,arrlen = timeArr.length,lenSum=30;
+
+        if( arrlen > lenSum ){
+           startIdx =100 - Number(lenSum/arrlen*100);
+        } 
+       option2 = {
+            color: ['#FF8400', '#006699', 'green', '#00FFFF','#8484FF','#ff0000'],
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            legend: {
+
+                  data:titleArr
+        },
+		 dataZoom: [{
+            type: 'inside',
+            start: startIdx,
+            end: 100
+            }, {
+                start: 0,
+                end: 10,
+                handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                handleSize: '10%',
+                handleStyle: {
+                    color: '#fff',
+                    shadowBlur: 3,
+                    shadowColor: 'rgba(0, 0, 0, 0.6)',
+                    shadowOffsetX: 2,
+                    shadowOffsetY: 2
+                }
+            }
+         ],
+		  toolbox: {
+            show: true,
+            orient: 'vertical',
+            right: '50px',
+            top: 'center',
+            feature: {
+                mark: {show: true},
+                dataView: {show: true, readOnly: false},
+                magicType: {show: true, type: ['line', 'bar']},
+                restore: {show: true},
+                saveAsImage: {show: true}
+            }
+        },    
+        calculable: true,
+        xAxis: [
+            {
+                type: 'category',
+                axisTick: {show: false},
+    //            data: ['2012', '2013', '2014', '2015', '2016','2017','2018']
+                data:timeArr
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value'
+            }
+        ],
+        series:seriesArr    
+
+    };;
+    if (option2 && typeof option2 === "object") {
+        myChart2.setOption(option2, true);
+    }
+}      
+  </script>
+{% endblock %}
