@@ -124,12 +124,12 @@ class CRNN():
                         pass
                 losses.append(sum(batch_loss)/len(batch_loss))
                 print('epoch  loss {}: {:.4f}'.format(i+1,losses[-1]))
-                if len(losses)>2 and losses[-1]*1.05>=losses[-2] and adjust>=5:
+                if len(losses)>2 and losses[-1]*1.05>=losses[-2] and losses[-1]>0.05 and adjust>=5:
                     print('reduce learning_rate by 20%')
                     sess.run(tf.assign(lr,lr/5))
                     adjust = 0
                 # 训练误差准确率较高时，停止训练
-                elif losses[-1] <= 0.1:
+                elif sum([a>=0.98 for a in train_accuracy[-5:]]) ==5:
                     print('early stop!')
                     break
             saver.save(sess,save_path)

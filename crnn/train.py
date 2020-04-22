@@ -12,11 +12,10 @@ from model import CRNN
 import os
 import string
 # os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
-in_put = (32,100)
 content = list(string.digits)+list(string.ascii_lowercase)
-data = data_generater_test(content,batch_size=128,input_shape = in_put)
+data = data_generater_test(content,batch_size=128,input_shape = (32,100))
 class_numbers = data.class_numbers
 im_shape = data.im_shape
 print('training model on {} samples'.format(data.lenth))
-model = CRNN(in_put,class_numbers,batch_size = 128)
-model.train(data,content,epoch=60)
+model = CRNN(im_shape,class_numbers,batch_size = 128)
+model.train(data,content,epoch=50)
