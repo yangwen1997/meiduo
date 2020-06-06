@@ -27,7 +27,7 @@ cycler==0.10.0
 dask==0.20.1
 decorator==4.3.0
 defusedxml==0.5.0
-django==2.1.5
+django==2.2.13
 django-apscheduler==0.2.13
 django-celery==3.2.2
 django-cors-headers==2.4.0
