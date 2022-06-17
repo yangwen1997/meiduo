@@ -119,7 +119,7 @@ retrying==1.3.3
 ruamel.yaml==0.15.77
 scikit-image==0.14.1
 scipy==1.1.0
-Scrapy==1.5.1
+Scrapy==2.6.1
 scrapy-redis==0.6.8
 scrapy-splash==0.7.2
 selenium==3.141.0
